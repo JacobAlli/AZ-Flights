@@ -11,23 +11,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset( $_POST['mcemail'] ) ) {
 		echo "Oops! There was a problem with your submission. Please complete the form and try again.";
 		exit;
 	}
-	
+
 	$mc_api = 'YOUR_API_KEY';
 	$mc_listid = 'YOUR_LIST_ID';
-	
+
 	$api = new MCAPI($mc_api);
 	$merge_vars = array('FNAME'=> '', 'LNAME'=> '');
-	
+
 	// Submit subscriber data to MailChimp
 	// For parameters doc, refer to: http://apidocs.mailchimp.com/api/1.3/listsubscribe.func.php
 	$retval = $api->listSubscribe( $mc_listid, $_POST["mcemail"], $merge_vars, 'html', false, true );
-	
+
 	if ($api->errorCode){
 		echo "Please try again.";
 	} else {
 		echo "Thank you, you have been added to our mailing list.";
 	}
-	
+
 }elseif ($_SERVER["REQUEST_METHOD"] == "POST" && isset( $_POST['message'] ) ) {
 	// Get the form fields and remove whitespace.
 	$name = strip_tags(trim($_POST["name"]));
@@ -45,10 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset( $_POST['mcemail'] ) ) {
 
 	// Set the recipient email address.
 	// FIXME: Update this to your desired email address.
-	$recipient = "RECIPIENT_MAIL";
+	$recipient = "jallison42@gmail.com";
 
 	// Set the email subject.
-	$subject = "Heaven contact from $name";
+	$subject = "Website contact from $name";
 
 	// Build the email content.
 	$email_content = "Name: $name\n";
