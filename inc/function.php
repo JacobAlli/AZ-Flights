@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset( $_POST['mcemail'] ) ) {
 	$merge_vars = array('FNAME'=> '', 'LNAME'=> '');
 
 	// Submit subscriber data to MailChimp
-	// For parameters doc, refer to: http://apidocs.mailchimp.com/api/1.3/listsubscribe.func.php
+	// For parameters doc, refer to: https://apidocs.mailchimp.com/api/1.3/listsubscribe.func.php
 	$retval = $api->listSubscribe( $mc_listid, $_POST["mcemail"], $merge_vars, 'html', false, true );
 
 	if ($api->errorCode){
